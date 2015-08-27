@@ -136,6 +136,32 @@ on boot
     # connections on high-throughput links get dropped when
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
+    
+    # AK9863 Magnetometer
+    chown compass compass /sys/class/compass/akm8963/enable_acc
+    chown compass compass /sys/class/compass/akm8963/enable_mag
+    chown compass compass /sys/class/compass/akm8963/enable_ori
+    chown compass compass /sys/class/compass/akm8963/delay_acc
+    chown compass compass /sys/class/compass/akm8963/delay_mag
+    chown compass compass /sys/class/compass/akm8963/delay_ori
+    chown compass compass /sys/class/compass/akm8963/accel
+
+    # CT406 Light sensor and proximity
+    chown system system /sys/module/ct406/parameters/als_enable
+    chmod 0660 /sys/module/ct406/parameters/als_enable
+    chown system system /sys/module/ct406/parameters/prox_enable
+    chmod 0660 /sys/module/ct406/parameters/prox_enable
+    chown system system /sys/module/ct406/parameters/ip_enable
+    chmod 0660 /sys/module/ct406/parameters/ip_enable
+    chown system system /sys/module/ct406/parameters/als_delay
+    chmod 0660 /sys/module/ct406/parameters/als_delay
+
+# Services start here
+
+service akmd8963 /system/bin/akmd8963
+    class main
+    user compass
+    group compass misc input
 
 on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
@@ -193,10 +219,6 @@ service rmt_storage /system/bin/rmt_storage
     user root
     group system
 
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-    class core
-    user root
-    oneshot
 
 on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
