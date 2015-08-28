@@ -241,10 +241,17 @@ service qmuxd /system/bin/qmuxd
 service netmgrd /system/bin/netmgrd
     class main
 
-service sensors /system/bin/sensors.qcom
-    class late_start
+#service sensors /system/bin/sensors.qcom
+#    class late_start
+#    user root
+#    group root radio system
+
+#SONY misc
+service tad_static /system/bin/tad_static /dev/block/platform/msm_sdcc.1/by-name/TA 0,16
     user root
-    group root radio system
+    group root
+    socket tad stream 0660 system system
+    class core
 
 service wcnss-service /system/bin/wcnss_service
     class main
