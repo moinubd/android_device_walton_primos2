@@ -247,10 +247,11 @@ service qmuxd /system/bin/qmuxd
 service netmgrd /system/bin/netmgrd
     class main
 
+# QCOM sensor
 service sensors /system/bin/sensors.qcom
-    class late_start
+    class main
     user root
-    group root radio system
+    group root
 
 
 service wcnss-service /system/bin/wcnss_service
