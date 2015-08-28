@@ -73,22 +73,21 @@
 /dev/uio1                 0660   system     system
 /dev/uio2                 0660   system     system
 
-# sensors
-/sys/devices/i2c-12/12-*  pollrate_ms 0664 system system
-/sys/devices/f9925000.i2c/i2c-0/0-* enable          0660     input     system
-/sys/devices/f9925000.i2c/i2c-0/0-* poll_delay      0660     input     system
-/sys/devices/virtual/optical_sensors/proximity      ps_adc         0660    input    system
-/sys/devices/virtual/optical_sensors/proximity      ps_poll_delay  0660    input    system
-/sys/devices/virtual/optical_sensors/lightsensor    ls_auto        0660    input    system
-/sys/devices/virtual/optical_sensors/lightsensor    ls_poll_delay  0660    input    system
-/sys/devices/virtual/input/input*                   poll           0660    input    system
-/sys/devices/virtual/input/input*                   pollrate_ms    0660    input    system
-/sys/devices/virtual/input/input*                   delay          0660    root     input
-/sys/devices/virtual/input/input*                   op_mode        0660    root     input
-/sys/devices/virtual/input/input*                   offset_x       0664    root     input
-/sys/devices/virtual/input/input*                   offset_y       0664    root     input
-/sys/devices/virtual/input/input*                   offset_z       0664    root     input
-/sys/devices/virtual/input/input*                   rept_xy        0664    root     input
-/sys/devices/virtual/input/input*                   rept_z         0664    root     input
-/sys/devices/virtual/input/input*                   bandwidth      0664    root     input
-/sys/devices/virtual/input/input*                   driver/enable  0660    root     input
+# Sensors
+/sys/devices/i2c-12/12-*  pollrate_ms                           0664 system system
+/sys/devices/f9925000.i2c/i2c-0/0-* enable                      0660 input  system
+/sys/devices/f9925000.i2c/i2c-0/0-* poll_delay                  0660 input  system
+/sys/devices/virtual/optical_sensors/proximity ps_adc           0660 input  system
+/sys/devices/virtual/optical_sensors/proximity ps_poll_delay    0660 input  system
+/sys/devices/virtual/optical_sensors/lightsensor ls_auto        0660 input  system
+/sys/devices/virtual/optical_sensors/lightsensor ls_poll_delay  0660 input  system
+/sys/devices/virtual/input/input* poll                          0660 input  system
+/sys/devices/virtual/input/input* pollrate_ms                   0660 input  system
+/sys/devices/f9924000.i2c/i2c-1/1-000f enable                   0660 root   input
+/sys/devices/f9924000.i2c/i2c-1/1-000f delay                    0660 system input
+/sys/devices/f9924000.i2c/i2c-1/1-000f direct                   0660 root   input
+/sys/devices/f9924000.i2c/i2c-1/1-000f data                     0440 root   input
+/sys/devices/f9924000.i2c/i2c-1/1-000f cali                     0660 system input
+/sys/devices/f9924000.i2c/i2c-1/1-000f offset                   0660 system input
+/dev/mmc3416x                                                   0660 system input
+/dev/ecompass_ctrl
