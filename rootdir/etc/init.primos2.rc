@@ -179,22 +179,18 @@ on post-fs-data
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
 
-    # Create directory used by sensor subsystem
+    # Sensors
     mkdir /data/system 0775 system system
-    mkdir /data/system/sensors
-    chmod 775 /data/system/sensors
+    mkdir /data/system/sensors 0775 system system
+    mkdir /data/misc/sensors 0775 system system
     write /data/system/sensors/settings 1
-    restorecon /data/system/sensors/settings
     chmod 664 /data/system/sensors/settings
 
-    # AKM setting data
-    mkdir /data/misc/sensors
-    chmod 775 /data/misc/sensors
+    chown system /dev/block/platform/msm_sdcc.1/by-name
 
-    # Sensor
-    mkdir /persist/misc
-    mkdir /persist/misc/sensors
-    chmod 775 /persist/misc/sensors
+    # permissions for mpdecision and thermald
+    mkdir /dev/socket/mpdecision 0770 system system
+    chmod 2770 /dev/socket/mpdecision
 
     setprop vold.post_fs_data_done 1
 
