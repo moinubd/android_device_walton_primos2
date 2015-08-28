@@ -90,4 +90,4 @@
 /sys/devices/f9924000.i2c/i2c-1/1-000f cali                     0660 system input
 /sys/devices/f9924000.i2c/i2c-1/1-000f offset                   0660 system input
 /dev/mmc3416x                                                   0660 system input
-/dev/ecompass_ctrl
+/dev/ecompass_ctrl                                              0660 system input
